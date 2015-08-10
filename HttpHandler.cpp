@@ -105,7 +105,7 @@ void HttpHandler::process(std::string request, Json::Value &parameters, Json::Va
 
         auto start = QDateTime::currentMSecsSinceEpoch();
         bool hasData = false;
-        int timeout = 250;
+        int timeout = 300;
 
         while (QDateTime::currentMSecsSinceEpoch()-start < timeout) {
             auto data = mainW->getData();
