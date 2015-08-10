@@ -12,7 +12,7 @@ class HttpHandler : public QObject
     Q_OBJECT
 
 public:
-    HttpHandler(MainWindow *main);
+    HttpHandler(MainWindow *main_);
 
     void process(std::string request, Json::Value &parameters, Json::Value &response);
 
@@ -20,7 +20,7 @@ public slots:
     void handle(QHttpRequest *req, QHttpResponse *resp);
 
 protected:
-    MainWindow *main;
+    MainWindow *mainW;
 };
 
 #endif // HTTPHANDLER_H

@@ -7,7 +7,7 @@
 #define MyAppURL "http://metabot.cc/"
 #define MyAppExeName "RobotManager.exe"
 
-[Setup]
+[Setup]                                                                        d
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
@@ -37,9 +37,9 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "fr.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: french
 Source: "en.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: english
 Source: "RobotManager.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "icudt53.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "icuin53.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "icuuc53.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "icudt54.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "icuin54.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "icuuc54.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "libgcc_s_sjlj-1.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion

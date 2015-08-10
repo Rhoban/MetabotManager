@@ -4,7 +4,7 @@
 #include "MainWindow.h"
 
 HttpHandler::HttpHandler(MainWindow *main_)
-    : main(main_)
+    : mainW(main_)
 {
 }
 
@@ -77,41 +77,38 @@ void HttpHandler::process(std::string request, Json::Value &parameters, Json::Va
         }
         std::string command = parameters.asString()+"\r\n";
 
-        if (!main->isConnected()) {
+        if (!mainW->isConnected()) {
             throw std::string("Port is closed");
         }
 
-        if (main->sendData(QString::fromStdString(command))) {
-            response = main->getResponse().toStdString();
+        if (mainW->sendData(QString::fromStdString(command))) {
+            response = mainW->getResponse().toStdString();
         } else {
-            main->closeConnection();
+            mainW->closeConnection();
             response = false;
         }
     } else if (request == "rhock") {
         response = Json::Value(Json::objectValue);
         response["version"] = "1.0";
-        if (main->isConnected()) {
-            main->sendData("rhock\r\nrhock\r\nrhock\r\n");
+        if (mainW->isConnected()) {
+            mainW->sendData("rhock\r\nrhock\r\nrhock\r\n");
             response["rhock_ready"] = true;
         } else {
             response["rhock_ready"] = false;
         }
     } else if (request == "get") {
-        main->checkConnection();
-        if (!main->isConnected()) {
+        mainW->checkConnection();
+        if (!mainW->isConnected()) {
             throw std::string("Not connected");
         }
         response = Json::Value(Json::arrayValue);
 
         auto start = QDateTime::currentMSecsSinceEpoch();
         bool hasData = false;
-        int timeout = 1000;
-        if (parameters.isInt()) {
-            timeout = qMin(1000, parameters.asInt());
-        }
+        int timeout = 250;
 
         while (QDateTime::currentMSecsSinceEpoch()-start < timeout) {
-            auto data = main->getData();
+            auto data = mainW->getData();
 
             if (data.length()) {
                 hasData = true;
@@ -131,7 +128,7 @@ void HttpHandler::process(std::string request, Json::Value &parameters, Json::Va
             std::cout << writer.write(response) << std::endl;
         }
     } else if (request == "send") {
-        if (main->isConnected() && parameters.isArray()) {
+        if (mainW->isConnected() && parameters.isArray()) {
             Json::FastWriter writer;
             std::cout << "Sending:" << std::endl;
             std::cout << writer.write(parameters) << std::endl;
@@ -142,13 +139,13 @@ void HttpHandler::process(std::string request, Json::Value &parameters, Json::Va
                     buffer += (char)(parameters[k].asInt());
                 }
             }
-            main->sendData(buffer);
+            mainW->sendData(buffer);
             response = true;
         } else {
             response = false;
         }
     } else if (request == "connected") {
-        response = main->isConnected();
+        response = mainW->isConnected();
     } else {
         throw std::string("Unknown request");
     }

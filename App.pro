@@ -25,7 +25,12 @@ SOURCES += main.cpp\
         Sequencer.cpp \
         FileDownloader.cpp \
         FirmwareUploader.cpp \
-    HttpHandler.cpp
+        HttpHandler.cpp \
+        qhttpserver/src/qhttpconnection.cpp \
+        qhttpserver/src/qhttprequest.cpp \
+        qhttpserver/src/qhttpresponse.cpp \
+        qhttpserver/src/qhttpserver.cpp \
+        qhttpserver/http-parser/http_parser.c
 
 HEADERS  += MainWindow.h \
             BT.h \
@@ -33,7 +38,11 @@ HEADERS  += MainWindow.h \
             Sequencer.h \
             FileDownloader.h \
             FirmwareUploader.h \
-    HttpHandler.h
+            HttpHandler.h \
+            qhttpserver/src/qhttpconnection.h \
+            qhttpserver/src/qhttprequest.h \
+            qhttpserver/src/qhttpresponse.h \
+            qhttpserver/src/qhttpserver.h
 
 FORMS    += MainWindow.ui
 
@@ -47,5 +56,4 @@ RESOURCES += \
 
 TRANSLATIONS = fr.ts en.ts
 
-INCLUDEPATH += $$PWD/qhttpserver/src/
-LIBS += -L$$PWD/qhttpserver/lib/ -lqhttpserver
+INCLUDEPATH += $$PWD/qhttpserver/src/ $$PWD/qhttpserver/http-parser/
