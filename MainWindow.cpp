@@ -29,16 +29,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(&port, SIGNAL(aboutToClose()), this, SLOT(on_port_close()));
 
-    QObject::connect(ui->walkButton, SIGNAL(clicked()), this, SLOT(updateGait()));
-    QObject::connect(ui->trotButton, SIGNAL(clicked()), this, SLOT(updateGait()));
-
-    addParameter(new SliderParameter(this, tr("Freq."), "freq", 0.5, 3.0, 2.0, 10));
-    addParameter(new SliderParameter(this, tr("Crab"), "crab", 0.0, 40.0, 0.0, 1));
-    addParameter(new SliderParameter(this, tr("Height."), "h", -130, -30.0, -55.0, 1));
-    addParameter(new SliderParameter(this, tr("Radius"), "r", 50, 130.0, 90.0, 1));
-    addParameter(new SliderParameter(this, tr("Alt"), "alt", 0.0, 50.0, 20.0, 1));
-    addParameter(new SliderParameter(this, tr("Pitch"), "frontH", -50.0, 50.0, 0.0, 0.5));
-
     QObject::connect(&versionDownloader, SIGNAL(downloaded(QByteArray)), this, SLOT(dowloadedVersion(QByteArray)));
     QObject::connect(&firmwareDownloader, SIGNAL(downloaded(QByteArray)), this, SLOT(dowloadedFirmware(QByteArray)));
 
@@ -232,39 +222,6 @@ void MainWindow::on_actionQuitter_triggered()
     close();
 }
 
-void MainWindow::on_startButton_clicked()
-{
-    updateAll();
-    sendCommand("start\n");
-    sequencer.setValue("dx", 0);
-    sequencer.setValue("dy", 0);
-    sequencer.setValue("turn", 0);
-}
-
-void MainWindow::on_stopButton_clicked()
-{
-    sendCommand("stop\n");
-    sequencer.setValue("dx", 0);
-    sequencer.setValue("dy", 0);
-    sequencer.setValue("turn", 0);
-}
-
-void MainWindow::on_dxSlider_sliderMoved(int position)
-{
-    sequencer.setValue("dx", ui->dxSlider->value());
-}
-
-void MainWindow::on_dxSlider_sliderReleased()
-{
-    ui->dxSlider->setValue(0);
-    sequencer.setValue("dx", 0);
-}
-
-void MainWindow::on_dySlider_sliderMoved(int position)
-{
-    sequencer.setValue("dy", ui->dySlider->value());
-}
-
 QString MainWindow::sendCommand(QString command, bool waitAnswer)
 {
     sendData(command);
@@ -299,57 +256,7 @@ bool MainWindow::getValue(QString name, float &output)
 void MainWindow::setEnable(bool enabled)
 {
     return;
-    ui->tabWidget->setTabEnabled(1, enabled);
-    ui->tabWidget->setTabEnabled(2, !enabled);
-}
-
-void MainWindow::addParameter(SliderParameter *parameter)
-{
-    parameters.push_back(parameter);
-    ui->parameters->addWidget(parameter);
-}
-
-void MainWindow::updateAll()
-{
-    for (auto parameter : parameters) {
-        parameter->updated();
-    }
-
-    updateGait();
-}
-
-void MainWindow::updateGait()
-{
-    if (ui->walkButton->isChecked()) gait = 0;
-    if (ui->trotButton->isChecked()) gait = 1;
-    sequencer.setValue("gait", gait);
-}
-
-void MainWindow::on_dySlider_sliderReleased()
-{
-    ui->dySlider->setValue(0);
-    sequencer.setValue("dy", 0);
-}
-
-void MainWindow::on_turnSlider_sliderMoved(int position)
-{
-    sequencer.setValue("turn", ui->turnSlider->value());
-}
-
-void MainWindow::on_turnSlider_sliderReleased()
-{
-    ui->turnSlider->setValue(0);
-    sequencer.setValue("turn", 0);
-}
-
-void MainWindow::on_resetButton_clicked()
-{
-    ui->walkButton->setChecked(false);
-    ui->trotButton->setChecked(true);
-
-    for (auto parameter : parameters) {
-        parameter->reset();
-    }
+    ui->tabWidget->setTabEnabled(1, !enabled);
 }
 
 void MainWindow::on_checkVersion_clicked()

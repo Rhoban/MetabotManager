@@ -52,17 +52,7 @@ private slots:
     void on_reconnect_clicked();
 
     void on_actionQuitter_triggered();
-    void on_startButton_clicked();
-    void on_stopButton_clicked();
-    void on_dxSlider_sliderMoved(int position);
-    void on_dxSlider_sliderReleased();
 
-    void on_dySlider_sliderMoved(int position);
-    void on_dySlider_sliderReleased();
-    void on_turnSlider_sliderMoved(int position);
-    void on_turnSlider_sliderReleased();
-
-    void on_resetButton_clicked();
     void on_checkVersion_clicked();
     void on_updateFimwarePorts_clicked();
     void on_updateFirmware_clicked();
@@ -80,9 +70,6 @@ public:
     void addParameter(SliderParameter *parameter);
 
 protected slots:
-    void updateAll();
-    void updateGait();
-
     void dowloadedVersion(const QByteArray &data);
     void dowloadedFirmware(const QByteArray &data);
 
