@@ -6,11 +6,15 @@
 #include <qextserialport.h>
 #include <qextserialenumerator.h>
 #include <QComboBox>
+#include <qhttpserver.h>
+#include <qhttprequest.h>
+#include <qhttpresponse.h>
 #include "BT.h"
 #include "SliderParameter.h"
 #include "Sequencer.h"
 #include "FileDownloader.h"
 #include "FirmwareUploader.h"
+#include "HttpHandler.h"
 
 class SliderParameter;
 
@@ -95,8 +99,11 @@ private:
 
     BT bluetooth;
     Ui::MainWindow *ui;
-    HttpDaemon *http;
+    QMutex mutex;
     QextSerialPort port;
+
+    QHttpServer *server;
+    HttpHandler httpHandler;
 };
 
 #endif // MAINWINDOW_H

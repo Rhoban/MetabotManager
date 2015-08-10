@@ -12,20 +12,20 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     sequencer(this),
-    firmwareUploader(this)
+    firmwareUploader(this),
+    httpHandler(this)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Robot manager"));
 
+    // Running the HTTP server
+    server = new QHttpServer;
+    connect(server, SIGNAL(newRequest(QHttpRequest*, QHttpResponse*)),
+            &httpHandler, SLOT(handle(QHttpRequest*, QHttpResponse*)));
+    server->listen(5757);
+
     // Populate the ports list
     populatePorts();
-
-    try {
-        http = new HttpDaemon(5757, this);
-    } catch (QString error) {
-        QMessageBox::warning(this, tr("Error"), tr("Unable to run the manager, maybe it is already running?"));
-        exit(EXIT_FAILURE);
-    }
 
     QObject::connect(&port, SIGNAL(aboutToClose()), this, SLOT(on_port_close()));
 
@@ -55,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete server;
 }
 
 void MainWindow::goToConnected()
@@ -142,20 +143,21 @@ bool MainWindow::isConnected()
 
 bool MainWindow::sendData(QString data)
 {
+    mutex.lock();
     if (port.isOpen()) {
-        int n = 0;
-        do {
-            n = port.readAll().length();
-        } while (n > 0);
-
         port.write(data.toLatin1(), data.length());
+        mutex.unlock();
         return port.isOpen();
     }
+    mutex.unlock();
 }
 
 QByteArray MainWindow::getData()
 {
-    return port.readAll();
+    mutex.lock();
+    auto data = port.readAll();
+    mutex.unlock();
+    return data;
 }
 
 QString MainWindow::getResponse()

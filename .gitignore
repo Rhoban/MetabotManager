@@ -1,1 +1,4 @@
 *.o
+*.user.*
+*.user
+build

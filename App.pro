@@ -17,23 +17,23 @@ CONFIG += c++11
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-        http/HttpDaemon.cpp \
         json/src/lib_json/json_reader.cpp \
         json/src/lib_json/json_writer.cpp \
         json/src/lib_json/json_value.cpp \
-    BT.cpp \
-    SliderParameter.cpp \
-    Sequencer.cpp \
-    FileDownloader.cpp \
-    FirmwareUploader.cpp
+        BT.cpp \
+        SliderParameter.cpp \
+        Sequencer.cpp \
+        FileDownloader.cpp \
+        FirmwareUploader.cpp \
+    HttpHandler.cpp
 
 HEADERS  += MainWindow.h \
-        http/HttpDaemon.h \
-    BT.h \
-    SliderParameter.h \
-    Sequencer.h \
-    FileDownloader.h \
-    FirmwareUploader.h
+            BT.h \
+            SliderParameter.h \
+            Sequencer.h \
+            FileDownloader.h \
+            FirmwareUploader.h \
+    HttpHandler.h
 
 FORMS    += MainWindow.ui
 
@@ -46,3 +46,6 @@ RESOURCES += \
     icons.qrc
 
 TRANSLATIONS = fr.ts en.ts
+
+INCLUDEPATH += $$PWD/qhttpserver/src/
+LIBS += -L$$PWD/qhttpserver/lib/ -lqhttpserver
