@@ -91,7 +91,9 @@ void HttpHandler::process(std::string request, Json::Value &parameters, Json::Va
         response = Json::Value(Json::objectValue);
         response["version"] = "1.0";
         if (mainW->isConnected()) {
-            mainW->sendData("rhock\r\nrhock\r\nrhock\r\n");
+            for (int k=0; k<15; k++) {
+                mainW->sendData("\r\nrhock\r\n");
+            }
             response["rhock_ready"] = true;
         } else {
             response["rhock_ready"] = false;
@@ -105,7 +107,7 @@ void HttpHandler::process(std::string request, Json::Value &parameters, Json::Va
 
         auto start = QDateTime::currentMSecsSinceEpoch();
         bool hasData = false;
-        int timeout = 300;
+        int timeout = 1000;
 
         while (QDateTime::currentMSecsSinceEpoch()-start < timeout) {
             auto data = mainW->getData();
@@ -113,6 +115,7 @@ void HttpHandler::process(std::string request, Json::Value &parameters, Json::Va
             if (data.length()) {
                 hasData = true;
                 for (int k=0; k<data.length(); k++) {
+                    // std::cout << (unsigned char)data.at(k);
                     response.append((unsigned char)data.at(k));
                 }
             } else {
