@@ -37,7 +37,7 @@
     <message>
         <location filename="MainWindow.ui" line="138"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#298a14;&quot;&gt;If you get connected to the robot, you&apos;ll then be able to control it using the &lt;/span&gt;&lt;a href=&quot;http://metabot.cc&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Metabot blocks system&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#298a14;&quot;&gt;Lorsque vous serez connectés à votre robot, vous pourrez alors utiliser le &lt;/span&gt;&lt;a href=&quot;http://metabot.cc&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;système de programmation par blocks Metabot.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#298a14;&quot;&gt;Lorsque vous serez connectés à votre robot, vous pourrez alors utiliser le &lt;/span&gt;&lt;a href=&quot;http://metabot.cc&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;système de programmation par blocks Metabot.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Control</source>
