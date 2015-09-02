@@ -91,6 +91,8 @@ private:
 
     QHttpServer *server;
     HttpHandler httpHandler;
+
+    bool connected = true;
 };
 
 #endif // MAINWINDOW_H

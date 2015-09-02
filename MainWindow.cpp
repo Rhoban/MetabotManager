@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     firmwareUploader(this),
     httpHandler(this)
 {
+    connected = false;
     ui->setupUi(this);
     setWindowTitle(tr("Robot manager"));
 
@@ -50,25 +51,31 @@ MainWindow::~MainWindow()
 
 void MainWindow::goToConnected()
 {
-    sendData(" \n");
-    ui->disconnect->setEnabled(true);
-    ui->ports->setEnabled(false);
-    ui->refresh->setEnabled(false);
-    ui->connect->hide();
-    ui->reconnect->show();
-    setMessage(tr("Connected"));
-    setEnable(true);
+    if (!connected) {
+        connected = true;
+        sendData(" \n");
+        ui->disconnect->setEnabled(true);
+        ui->ports->setEnabled(false);
+        ui->refresh->setEnabled(false);
+        ui->connect->hide();
+        ui->reconnect->show();
+        setMessage(tr("Connected"));
+        setEnable(true);
+    }
 }
 
 void MainWindow::goToDisconnected()
 {
-    ui->ports->setEnabled(true);
-    ui->disconnect->setEnabled(false);
-    ui->refresh->setEnabled(true);
-    ui->reconnect->hide();
-    ui->connect->show();
-    setMessage(tr("Disconnected"), true);
-    setEnable(false);
+    if (connected) {
+        connected = false;
+        ui->ports->setEnabled(true);
+        ui->disconnect->setEnabled(false);
+        ui->refresh->setEnabled(true);
+        ui->reconnect->hide();
+        ui->connect->show();
+        setMessage(tr("Disconnected"), true);
+        setEnable(false);
+    }
 }
 
 void MainWindow::populatePorts()
@@ -112,9 +119,11 @@ void MainWindow::checkConnection()
         }
     }
 
-    if (!portFound || !port.isOpen()) {
-        goToDisconnected();
-        populatePorts();
+    if (connected) {
+        if (!portFound || !port.isOpen()) {
+            goToDisconnected();
+            populatePorts();
+        }
     }
 }
 
