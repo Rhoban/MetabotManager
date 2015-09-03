@@ -56,14 +56,14 @@ QHttpConnection::QHttpConnection(QTcpSocket *socket, QObject *parent, QHttpHandl
     m_parser->data = this;
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(parseRequest()));
-    connect(socket, SIGNAL(disconnected()), this, SLOT(socketDisconnected()));
+    // connect(socket, SIGNAL(disconnected()), this, SLOT(socketDisconnected()));
     connect(socket, SIGNAL(bytesWritten(qint64)), this, SLOT(updateWriteCount(qint64)));
 }
 
 QHttpConnection::~QHttpConnection()
 {
-    delete m_socket;
-    m_socket = 0;
+    // delete m_socket;
+    // m_socket = 0;
 
     free(m_parser);
     m_parser = 0;

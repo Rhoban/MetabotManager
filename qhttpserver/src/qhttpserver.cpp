@@ -96,8 +96,8 @@ QHttpServer::~QHttpServer()
 
 void QHttpServer::incomingConnection(qintptr socketDescriptor)
 {
-    qDebug() << "Connection!";
     QHttpConnectionThread *connection = new QHttpConnectionThread(socketDescriptor, NULL, handler);
+    connect(connection, SIGNAL(finished()), connection, SLOT(deleteLater()));
     connection->start();
 }
 

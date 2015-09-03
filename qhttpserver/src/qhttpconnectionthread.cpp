@@ -10,7 +10,7 @@ QHttpConnectionThread::QHttpConnectionThread(qintptr id, QObject *parent, QHttpH
 
 void QHttpConnectionThread::run()
 {
-    auto socket = new QTcpSocket();
+    socket = new QTcpSocket();
 
     // set the ID
     if(!socket->setSocketDescriptor(this->socketId))
@@ -20,16 +20,20 @@ void QHttpConnectionThread::run()
         return;
     }
 
-    QHttpConnection connection(socket, NULL, handler);
+    QHttpConnection *connection = new QHttpConnection
+            (socket, NULL, handler);
     QObject::connect(socket, SIGNAL(disconnected()),
                      this, SLOT(disconnected()));
 
     exec();
+    connection->deleteLater();
+    qDebug() << "End of exec()";
 }
 
 void QHttpConnectionThread::disconnected()
 {
-    deleteLater();
-    exit(0);
+    qDebug() << "Disconnected";
+    socket->deleteLater();
+    QThread::quit();
 }
 

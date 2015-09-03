@@ -1,6 +1,7 @@
 #ifndef QHTTPCONNECTIONTHREAD_H
 #define QHTTPCONNECTIONTHREAD_H
 
+#include <QTcpSocket>
 #include <QThread>
 #include "qhttphandler.h"
 
@@ -13,6 +14,7 @@ public:
     void run();
 
     QHttpHandler *handler;
+    QTcpSocket *socket;
     qintptr socketId;
 
 public slots:
