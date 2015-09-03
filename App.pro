@@ -30,7 +30,9 @@ SOURCES += main.cpp\
         qhttpserver/src/qhttprequest.cpp \
         qhttpserver/src/qhttpresponse.cpp \
         qhttpserver/src/qhttpserver.cpp \
-        qhttpserver/http-parser/http_parser.c
+        qhttpserver/http-parser/http_parser.c \
+    qhttpserver/src/qhttpconnectionthread.cpp \
+    qhttpserver/src/qhttphandler.cpp
 
 HEADERS  += MainWindow.h \
             BT.h \
@@ -42,7 +44,9 @@ HEADERS  += MainWindow.h \
             qhttpserver/src/qhttpconnection.h \
             qhttpserver/src/qhttprequest.h \
             qhttpserver/src/qhttpresponse.h \
-            qhttpserver/src/qhttpserver.h
+            qhttpserver/src/qhttpserver.h \
+    qhttpserver/src/qhttpconnectionthread.h \
+    qhttpserver/src/qhttphandler.h
 
 FORMS    += MainWindow.ui
 

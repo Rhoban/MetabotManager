@@ -31,8 +31,9 @@
 
 /// @cond nodoc
 
-QHttpConnection::QHttpConnection(QTcpSocket *socket, QObject *parent)
+QHttpConnection::QHttpConnection(QTcpSocket *socket, QObject *parent, QHttpHandler *handler_)
     : QObject(parent),
+      handler(handler_),
       m_socket(socket),
       m_parser(0),
       m_parserSettings(0),
@@ -224,7 +225,7 @@ int QHttpConnection::HeadersComplete(http_parser *parser)
     connect(response, SIGNAL(done()), theConnection, SLOT(responseDone()));
 
     // we are good to go!
-    Q_EMIT theConnection->newRequest(theConnection->m_request, response);
+    theConnection->handler->handle(theConnection->m_request, response);
     return 0;
 }
 

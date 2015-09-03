@@ -21,8 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Running the HTTP server
     server = new QHttpServer;
-    connect(server, SIGNAL(newRequest(QHttpRequest*, QHttpResponse*)),
-            &httpHandler, SLOT(handle(QHttpRequest*, QHttpResponse*)));
+    server->handler = &httpHandler;
     server->listen(5757);
 
     // Populate the ports list

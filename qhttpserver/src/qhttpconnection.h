@@ -25,6 +25,7 @@
 
 #include "qhttpserverapi.h"
 #include "qhttpserverfwd.h"
+#include "qhttphandler.h"
 
 #include <QObject>
 
@@ -35,7 +36,8 @@ class QHTTPSERVER_API QHttpConnection : public QObject
     Q_OBJECT
 
 public:
-    QHttpConnection(QTcpSocket *socket, QObject *parent = 0);
+    QHttpConnection(QTcpSocket *socket, QObject *parent = 0, QHttpHandler *handler = 0);
+    QHttpHandler *handler;
     virtual ~QHttpConnection();
 
     void write(const QByteArray &data);
