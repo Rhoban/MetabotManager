@@ -27,12 +27,10 @@ void QHttpConnectionThread::run()
 
     exec();
     connection->deleteLater();
-    qDebug() << "End of exec()";
 }
 
 void QHttpConnectionThread::disconnected()
 {
-    qDebug() << "Disconnected";
     socket->deleteLater();
     QThread::quit();
 }
