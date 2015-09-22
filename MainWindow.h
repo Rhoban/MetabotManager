@@ -61,6 +61,10 @@ private slots:
     void on_firmwareStatusChange(QString status);
     void on_firmwareUploaded();
 
+    void on_tabWidget_tabBarClicked(int index);
+
+    void on_robotChoice_currentIndexChanged(int index);
+
 public:
     QString sendCommand(QString command, bool waitAnswer=false);
     void setValue(QString name, float value);
@@ -75,6 +79,7 @@ protected slots:
 
 private:
     int gait;
+    QString robotModel;
     std::vector<SliderParameter*> parameters;
 
     FirmwareUploader firmwareUploader;

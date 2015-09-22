@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     firmwareUploader(this),
     httpHandler(this)
 {
+    robotModel = "metabot2";
+
     connected = false;
     ui->setupUi(this);
     setWindowTitle(tr("Robot manager"));
@@ -269,7 +271,7 @@ void MainWindow::setEnable(bool enabled)
 
 void MainWindow::on_checkVersion_clicked()
 {
-    versionDownloader.download("http://metabot.cc/files/firmware/metabot.version");
+    versionDownloader.download(QString("http://metabot.cc/files/firmware/") + robotModel + ".version");
     ui->version->setText(tr("Obtaining the firmware..."));
 }
 
@@ -277,7 +279,7 @@ void MainWindow::dowloadedVersion(const QByteArray &data)
 {
     version = data.trimmed();
     ui->version->setText(tr("Getting firmware..."));
-    firmwareDownloader.download("http://metabot.cc/files/firmware/metabot.bin");
+    firmwareDownloader.download(QString("http://metabot.cc/files/firmware/") + robotModel + ".bin");
 }
 
 void MainWindow::dowloadedFirmware(const QByteArray &data)
@@ -323,4 +325,23 @@ void MainWindow::on_firmwareUploaded()
     ui->updateFirmware->setEnabled(true);
     ui->firmwarePorts->setEnabled(true);
     ui->updateFimwarePorts->setEnabled(true);
+}
+
+void MainWindow::on_tabWidget_tabBarClicked(int index)
+{
+    if (index == 1) {
+        port.close();
+    }
+}
+
+void MainWindow::on_robotChoice_currentIndexChanged(int index)
+{
+    switch (index) {
+        case 0:
+            robotModel = "metabot2";
+            break;
+        case 1:
+            robotModel = "metabot";
+            break;
+    }
 }
