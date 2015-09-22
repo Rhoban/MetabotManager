@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>499</width>
-    <height>321</height>
+    <height>378</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -172,6 +172,20 @@
         <string>Firmware</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QComboBox" name="robotChoice">
+          <item>
+           <property name="text">
+            <string>Metabot V2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Metabot V1</string>
+           </property>
+          </item>
+         </widget>
+        </item>
         <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
