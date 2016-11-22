@@ -31,7 +31,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
@@ -194,6 +194,13 @@
           <property name="icon">
            <iconset resource="icons.qrc">
             <normaloff>:/icons/img/refresh.png</normaloff>:/icons/img/refresh.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCommandLinkButton" name="commandLinkButton">
+          <property name="text">
+           <string>CommandLinkButton</string>
           </property>
          </widget>
         </item>
