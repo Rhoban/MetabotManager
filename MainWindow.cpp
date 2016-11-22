@@ -324,3 +324,8 @@ void MainWindow::on_firmwareUploaded()
     ui->firmwarePorts->setEnabled(true);
     ui->updateFimwarePorts->setEnabled(true);
 }
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    port.close();
+}

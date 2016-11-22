@@ -61,6 +61,8 @@ private slots:
     void on_firmwareStatusChange(QString status);
     void on_firmwareUploaded();
 
+    void on_tabWidget_currentChanged(int index);
+
 public:
     QString sendCommand(QString command, bool waitAnswer=false);
     void setValue(QString name, float value);
