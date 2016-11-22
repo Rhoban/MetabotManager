@@ -37,6 +37,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(&firmwareUploader, SIGNAL(status(QString)), this, SLOT(on_firmwareStatusChange(QString)));
     ui->progressBar->hide();
 
+    // Populate the robot choice
+    ui->robotChoice->addItem("Metabot V2", "metabot2");
+    ui->robotChoice->addItem("Metabot", "metabot");
+
     setEnable(false);
 
     ui->reconnect->hide();
@@ -267,9 +271,14 @@ void MainWindow::setEnable(bool enabled)
     ui->tabWidget->setTabEnabled(1, !enabled);
 }
 
+QString MainWindow::selectedRobot()
+{
+    return ui->robotChoice->currentData().toString();
+}
+
 void MainWindow::on_checkVersion_clicked()
 {
-    versionDownloader.download("http://metabot.cc/files/firmware/metabot.version");
+    versionDownloader.download("http://metabot.cc/files/firmware/"+selectedRobot()+".version");
     ui->version->setText(tr("Obtaining the firmware..."));
 }
 
@@ -277,7 +286,7 @@ void MainWindow::dowloadedVersion(const QByteArray &data)
 {
     version = data.trimmed();
     ui->version->setText(tr("Getting firmware..."));
-    firmwareDownloader.download("http://metabot.cc/files/firmware/metabot.bin");
+    firmwareDownloader.download("http://metabot.cc/files/firmware/"+selectedRobot()+".bin");
 }
 
 void MainWindow::dowloadedFirmware(const QByteArray &data)

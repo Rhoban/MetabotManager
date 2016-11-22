@@ -184,6 +184,9 @@
          </widget>
         </item>
         <item>
+         <widget class="QComboBox" name="robotChoice"/>
+        </item>
+        <item>
          <widget class="QPushButton" name="checkVersion">
           <property name="text">
            <string>Get the last version of the firmware</string>

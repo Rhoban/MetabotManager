@@ -58,7 +58,7 @@ void FirmwareUploader::run()
 
             while (!isReady(received) && t.elapsed()<5000) {
                 received += p.readAll();
-                QThread::msleep(100);
+                QThread::msleep(10);
             }
             if (isReady(received)) {
                 emit status("Ready! Sending firmware...");
@@ -68,6 +68,7 @@ void FirmwareUploader::run()
                 unsigned int size = data.size();
                 unsigned char checksum = 0;
                 while (position < size) {
+                    QThread::msleep(15);
                     QByteArray tmp;
                     for (int k=0; (k<1024) && (position<size); k++) {
                         unsigned char c = raw[position++];
@@ -87,6 +88,7 @@ void FirmwareUploader::run()
                 while (!isSuccess(received) && t.elapsed()<5000) {
                     auto r = p.readAll();
                     if (r != "") std::cout << QString(r).toStdString() << std::endl;
+                    emit status(QString(r));
                     received += r;
                     QThread::msleep(100);
                 }

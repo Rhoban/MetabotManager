@@ -71,6 +71,7 @@ public:
     void setEnable(bool enabled);
     void addParameter(SliderParameter *parameter);
 
+    QString selectedRobot();
 protected slots:
     void dowloadedVersion(const QByteArray &data);
     void dowloadedFirmware(const QByteArray &data);
