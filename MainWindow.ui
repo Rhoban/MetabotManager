@@ -198,13 +198,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QCommandLinkButton" name="commandLinkButton">
-          <property name="text">
-           <string>CommandLinkButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLabel" name="version">
           <property name="text">
            <string/>
