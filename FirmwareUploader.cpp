@@ -47,7 +47,7 @@ void FirmwareUploader::run()
         p.write("CM9X");
         p.close();
         emit status("Rebooting the board...");
-        QThread::msleep(1000);
+        QThread::msleep(1500);
 
         if (p.open(QIODevice::ReadWrite)) {
             QThread::msleep(100);
