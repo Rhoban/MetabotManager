@@ -7,7 +7,7 @@
 #define MyAppURL "http://metabot.cc/"
 #define MyAppExeName "RobotManager.exe"
 
-[Setup]                                                                        d
+[Setup]                                                                        
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
@@ -33,23 +33,23 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
+[Dirs]
+Name: "{app}\platforms"
+Name: "{app}\iconengines"
+Name: "{app}\imageformats"
+Name: "{app}\bearer"
+Name: "{app}\translations"
+
 [Files]
 Source: "fr.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: french
 Source: "en.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: english
 Source: "RobotManager.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "icudt54.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "icuin54.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "icuuc54.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "libgcc_s_sjlj-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Qt5Network.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Qt5Widgets.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "libEGLd.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "platforms/qwindows.dll"; DestDir: "{app}/platforms"; Flags: ignoreversion
+Source: "*.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "platforms\*"; DestDir: "{app}\platforms\"; Flags: ignoreversion
+Source: "iconengines\*"; DestDir: "{app}\iconengines\"; Flags: ignoreversion
+Source: "imageformats\*"; DestDir: "{app}\imageformats\"; Flags: ignoreversion
+Source: "translations\*"; DestDir: "{app}\translations\"; Flags: ignoreversion
+Source: "bearer\*"; DestDir: "{app}\bearer\"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

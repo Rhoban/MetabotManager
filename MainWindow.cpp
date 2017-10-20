@@ -202,7 +202,7 @@ void MainWindow::on_refresh_clicked()
 
 void MainWindow::on_connect_clicked()
 {
-    ui->status->setText("<font color=\"blue\">Trying to connect...</font>");
+    ui->status->setText("<font color=\"blue\">"+tr("Trying to connect...")+"</font>");
     repaint();
 
     if (port.isOpen()) {
