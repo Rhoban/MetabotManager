@@ -41,15 +41,15 @@ Name: "{app}\bearer"
 Name: "{app}\translations"
 
 [Files]
-Source: "fr.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: french
-Source: "en.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: english
-Source: "RobotManager.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "*.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "platforms\*"; DestDir: "{app}\platforms\"; Flags: ignoreversion
-Source: "iconengines\*"; DestDir: "{app}\iconengines\"; Flags: ignoreversion
-Source: "imageformats\*"; DestDir: "{app}\imageformats\"; Flags: ignoreversion
-Source: "translations\*"; DestDir: "{app}\translations\"; Flags: ignoreversion
-Source: "bearer\*"; DestDir: "{app}\bearer\"; Flags: ignoreversion
+Source: "RobotManager\fr.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: french
+Source: "RobotManager\en.qm"; DestDir: "{app}"; DestName: "messages.qm"; Languages: english
+Source: "RobotManager\RobotManager.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RobotManager\*.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "RobotManager\platforms\*"; DestDir: "{app}\platforms\"; Flags: ignoreversion
+Source: "RobotManager\iconengines\*"; DestDir: "{app}\iconengines\"; Flags: ignoreversion
+Source: "RobotManager\imageformats\*"; DestDir: "{app}\imageformats\"; Flags: ignoreversion
+Source: "RobotManager\translations\*"; DestDir: "{app}\translations\"; Flags: ignoreversion
+Source: "RobotManager\bearer\*"; DestDir: "{app}\bearer\"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
