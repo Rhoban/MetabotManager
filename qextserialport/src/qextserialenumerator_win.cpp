@@ -163,14 +163,16 @@ static bool getDeviceDetailsInformation(QextPortInfo *portInfo, HDEVINFO devInfo
         portInfo->physName = getDeviceRegistryProperty(devInfoSet, devInfoData, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME);
 
     HKEY devKey = ::SetupDiOpenDevRegKey(devInfoSet, devInfoData, DICS_FLAG_GLOBAL, 0, DIREG_DEV, KEY_QUERY_VALUE);
-    portInfo->portName = getRegKeyValue(devKey, TEXT("PortName"));
-    QString btid = getRegKeyValue(devKey, TEXT("Bluetooth_UniqueID"));
-    QRegExp btreg("(.+)#([0-9a-z]+)_", Qt::CaseInsensitive);
-    portInfo->bluetoothAddr = "";
-    if (btid.contains(btreg)) {
-        portInfo->bluetoothAddr = btreg.cap(2).toLower();
+    if (devKey != INVALID_HANDLE_VALUE) {
+        portInfo->portName = getRegKeyValue(devKey, TEXT("PortName"));
+        QString btid = getRegKeyValue(devKey, TEXT("Bluetooth_UniqueID"));
+        QRegExp btreg("(.+)#([0-9a-z]+)_", Qt::CaseInsensitive);
+        portInfo->bluetoothAddr = "";
+        if (btid.contains(btreg)) {
+            portInfo->bluetoothAddr = btreg.cap(2).toLower();
+        }
+        ::RegCloseKey(devKey);
     }
-    ::RegCloseKey(devKey);
 
     QString hardwareIDs = getDeviceRegistryProperty(devInfoSet, devInfoData, SPDRP_HARDWAREID);
     QRegExp idRx(QLatin1String("VID_(\\w+)&PID_(\\w+)"));

@@ -120,7 +120,7 @@ bool QextSerialPortPrivate::open_sys(QIODevice::OpenMode mode)
 
 bool QextSerialPortPrivate::close_sys()
 {
-    flush_sys();
+    // flush_sys();
     CancelIo(handle);
     if (CloseHandle(handle))
         handle = INVALID_HANDLE_VALUE;

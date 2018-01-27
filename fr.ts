@@ -95,22 +95,22 @@
         <translation>Vous pouvez mettre à jour votre firmware ici&lt;br&gt;&lt;b&gt;Attention: vous devez être branchés en USB&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="189"/>
+        <location filename="MainWindow.ui" line="192"/>
         <source>Get the last version of the firmware</source>
         <translation>Obtenir la dernière version du firmware</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="219"/>
+        <location filename="MainWindow.ui" line="222"/>
         <source>Refresh ports list</source>
         <translation>Rafraîchir la liste des ports</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="233"/>
+        <location filename="MainWindow.ui" line="236"/>
         <source>Update the firmware</source>
         <translation>Mettre le firmware à jour</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="276"/>
+        <location filename="MainWindow.ui" line="279"/>
         <source>&lt;em&gt;If your board doesn&apos;t respond, try pressing both buttons, release the user button and then release the RESET button. Then, the green led should be solid, you are in forced bootloader mode.&lt;/em&gt;</source>
         <translation>&lt;em&gt;Si votre carte ne répond plus, pressez simultanément les deux boutons, puis relâchez le bouton utilisateur, puis relâchez RESET. La LED verte devrait s&apos;allumer, vous pouvez désormais envoyer votre firmware.&lt;/em&gt;</translation>
     </message>
@@ -119,12 +119,12 @@
         <translation type="vanished">Fichier</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="291"/>
+        <location filename="MainWindow.ui" line="294"/>
         <source>Quit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="294"/>
+        <location filename="MainWindow.ui" line="297"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
@@ -165,12 +165,12 @@
         <translation type="vanished">Pitch</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="59"/>
+        <location filename="MainWindow.cpp" line="65"/>
         <source>Connected</source>
         <translation>Connecté</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="70"/>
+        <location filename="MainWindow.cpp" line="79"/>
         <source>Disconnected</source>
         <translation>Déconnecté</translation>
     </message>
@@ -179,22 +179,27 @@
         <translation type="vanished">Connecté, voltage: %1V</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="19"/>
+        <location filename="MainWindow.cpp" line="20"/>
         <source>Robot manager</source>
         <translation>Gestionnaire de robot</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="265"/>
+        <location filename="MainWindow.cpp" line="205"/>
+        <source>Trying to connect...</source>
+        <translation>Connexion en cours...</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="292"/>
         <source>Obtaining the firmware...</source>
         <translation>Téléchargement du firmware...</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="271"/>
+        <location filename="MainWindow.cpp" line="298"/>
         <source>Getting firmware...</source>
         <translation>Récupération du firmware...</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="278"/>
+        <location filename="MainWindow.cpp" line="305"/>
         <source>Version %1, size: %2 bytes</source>
         <translation>Version: %1, taille: %2 octets</translation>
     </message>

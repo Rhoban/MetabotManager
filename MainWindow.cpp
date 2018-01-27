@@ -157,9 +157,13 @@ bool MainWindow::sendData(QString data)
 
 QByteArray MainWindow::getData()
 {
+    QByteArray data;
     mutex.lock();
-    auto data = port.readAll();
+    if (port.isOpen()) {
+        data = port.readAll();
+    }
     mutex.unlock();
+
     return data;
 }
 
@@ -171,7 +175,10 @@ QString MainWindow::getResponse()
     t.start();
 
     while (port.isOpen() && !over && t.elapsed()<500) {
-        auto data = port.readAll();
+        QByteArray data;
+        if (port.isOpen()) {
+            data =port.readAll();
+        }
         for (int i=0; i<data.length(); i++) {
             if (data[i] == '$') {
                 over = true;
@@ -196,6 +203,9 @@ void MainWindow::on_refresh_clicked()
 
 void MainWindow::on_connect_clicked()
 {
+    ui->status->setText("<font color=\"blue\">"+tr("Trying to connect...")+"</font>");
+    repaint();
+
     if (port.isOpen()) {
         port.close();
     }

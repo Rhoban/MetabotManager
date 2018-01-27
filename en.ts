@@ -51,62 +51,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="189"/>
+        <location filename="MainWindow.ui" line="192"/>
         <source>Get the last version of the firmware</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="219"/>
+        <location filename="MainWindow.ui" line="222"/>
         <source>Refresh ports list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="233"/>
+        <location filename="MainWindow.ui" line="236"/>
         <source>Update the firmware</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="276"/>
+        <location filename="MainWindow.ui" line="279"/>
         <source>&lt;em&gt;If your board doesn&apos;t respond, try pressing both buttons, release the user button and then release the RESET button. Then, the green led should be solid, you are in forced bootloader mode.&lt;/em&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="291"/>
+        <location filename="MainWindow.ui" line="294"/>
         <source>Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="294"/>
+        <location filename="MainWindow.ui" line="297"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="59"/>
+        <location filename="MainWindow.cpp" line="65"/>
         <source>Connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="70"/>
+        <location filename="MainWindow.cpp" line="79"/>
         <source>Disconnected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="19"/>
+        <location filename="MainWindow.cpp" line="20"/>
         <source>Robot manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="265"/>
+        <location filename="MainWindow.cpp" line="205"/>
+        <source>Trying to connect...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="292"/>
         <source>Obtaining the firmware...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="271"/>
+        <location filename="MainWindow.cpp" line="298"/>
         <source>Getting firmware...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="278"/>
+        <location filename="MainWindow.cpp" line="305"/>
         <source>Version %1, size: %2 bytes</source>
         <translation type="unfinished"></translation>
     </message>
