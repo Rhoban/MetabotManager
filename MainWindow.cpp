@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Populate the robot choice
     ui->robotChoice->addItem("Metabot V2", "metabot2");
     ui->robotChoice->addItem("Metabot", "metabot");
+    ui->robotChoice->addItem("HoloBot", "holobot");
 
     setEnable(false);
 
