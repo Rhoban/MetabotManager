@@ -63,6 +63,7 @@ void HttpHandler::handle(QHttpRequest *req, QHttpResponse *resp)
     std::string responseData = ss.str();
     resp->setHeader("Content-length", QString("%1").arg(responseData.length()));
     resp->setHeader("Content-Type", "application/json; charset=\"utf-8\"");
+    resp->setHeader("Access-Control-Allow-Origin", "*");
     resp->writeHead(200);
     resp->write(QByteArray(responseData.c_str(), responseData.length()));
 }
